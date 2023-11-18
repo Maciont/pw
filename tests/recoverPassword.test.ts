@@ -1,6 +1,6 @@
 // import {expect, test} from "@playwright/test";
 import test from '../lib/BaseTest';
-import expect from '../lib/BaseTest';
+// import expect from "@playwright/test";
 import { beforeEach } from "node:test";
 
 
@@ -16,7 +16,7 @@ test.describe('Recovery email validation', () => {
         // const recover = new RecoverPasswordPage(page);
         await recover.emailField.fill('Im not an email');
         await recover.recoverHeader.click();
-        await expect(recover.recoveryEmailWarning).toBeVisible;
+        await expect(recover.recoveryEmailWarning).toBeVisible();
         await recover.emailField.click(); //just to see warning message in test runner
 }
 )
