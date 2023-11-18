@@ -1,8 +1,5 @@
 import test from '../lib/BaseTest';
 import { expect } from '@playwright/test';
-// import { beforeEach } from 'node:test';
-
-
 
 test.describe('Recovery email validation', () => {
     test.beforeEach('Test setup', async ({recover}) => {
@@ -21,11 +18,8 @@ test.describe('Recovery email validation', () => {
         await recover.recoverHeader.click();
         await expect(recover.recoveryEmailWarning).not.toBeVisible();
         await recover.emailField.click();
-    })
-
-    
+    })    
 }
-
 )
 
 test.describe('Error toast message', () =>{
@@ -34,7 +28,6 @@ test.describe('Error toast message', () =>{
 })
 
     test('Check if toast message appears when email is not found in DB', async ({recover}) => {
-        // const toast = await recover.page.getByRole('alert');
         await recover.emailField.fill('abx@xyz.com');
         await recover.recoverSendResetLink.click();
         await expect(recover.recoveryWrongEmailToast).toBeVisible();

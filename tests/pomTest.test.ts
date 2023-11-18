@@ -23,7 +23,5 @@ test("go to login",async ({login}) => {
 })
 
 test("go to password recovery", async ({recover}) => {
-    await recover.navigateToPasswordRecoveryPopup();
-   
-    
+    await recover.navigateToPasswordRecoveryPopup(); 
 })

@@ -15,7 +15,6 @@ export class LoginPage {
     constructor(page: Page) {
         this.page = page;
         this.loginButton = page.locator('a', { hasText: 'Log In' });
-        // this.emailField = page.getByPlaceholder('Enter your email');
         this.emailField = page.locator('#email');
         this.passwordField = page.locator('#password');
         this.emailWarning = page.locator('p', { hasText: 'You have entered an invalid email address. Please try again.'});
