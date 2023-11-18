@@ -13,8 +13,8 @@ test.describe('Check elements', () => {
     )
     
     test('Check if category names match the list', async ({generatorMain}) => {
-        const expectedCategoryNames =['Facebook', "Wi-Fi", 'Website URL', 'vCard', 'Business Page', 
-        'App', 'Video', 'Menu', 'PDF', 'Social Media', 'Simple Text', 'Images'];
+        const expectedCategoryNames =['Website URL', 'vCard', 'Business Page', 
+        'App', 'Video', 'Menu', 'PDF', 'Social Media', 'Facebook', 'Simple Text',"Wi-Fi", 'Images'];
         const actualCategoryNames = await generatorMain.getCategoryNames();
         console.log('Actual categories:', actualCategoryNames);
         expect(actualCategoryNames).toEqual(expectedCategoryNames);
