@@ -4,17 +4,17 @@ import { RecoverPasswordPage } from '../pages/recoverPasswordPage';
 import { LandingPage } from '../pages/landingPage';
 
 const test = baseTest.extend<{
-    loginPage: LoginPage;
+    login: LoginPage;
     recover: RecoverPasswordPage;
-    landingPage: LandingPage;
+    landing: LandingPage;
 }>({
-    loginPage: async ({page, context}, use) => {
+    login: async ({page, context}, use) => {
         await use(new LoginPage(page));
     },
     recover: async ({page, context}, use) => {
         await use(new RecoverPasswordPage(page));
     },
-    landingPage: async ({page, context}, use) => {
+    landing: async ({page, context}, use) => {
         await use(new LandingPage(page));
     }
 })

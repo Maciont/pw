@@ -1,12 +1,7 @@
-import {expect, test} from "@playwright/test";
-import {LandingPage} from "../pages/landingPage";
-import { url } from "inspector";
-import { LoginPage } from "../pages/loginPage";
-import { RecoverPasswordPage } from "../pages/recoverPasswordPage";
+import test from '../lib/BaseTest';
+import {expect} from "@playwright/test";
 
-test("click test", async ({page}) => {
-    const landing = new LandingPage(page);
-    const login = new LoginPage(page);
+test("click test", async ({landing, login, page}) => {
     await landing.goto();
     await landing.clickLogInButton();
     await login.emailField.fill('xxx yyy zzz');
@@ -17,21 +12,18 @@ test("click test", async ({page}) => {
 }
 )
 
-test("go to create", async ({page}) => {
-    const landing = new LandingPage(page);
+test("go to create", async ({landing, page}) => {
     await landing.goto();
     await landing.clickCreateCode();
     await expect(page).toHaveURL('https://myqrcode.com/generator');
 })
 
-test("go to login",async ({page}) => {
-    const login = new LoginPage(page);
+test("go to login",async ({login}) => {
     await login.navigateToLoginPage();
 })
 
-test("go to password recovery", async ({page}) => {
-    const recovery = new RecoverPasswordPage(page);
-    await recovery.navigateToPasswordRecoveryPopup();
+test("go to password recovery", async ({recover}) => {
+    await recover.navigateToPasswordRecoveryPopup();
    
     
 })
