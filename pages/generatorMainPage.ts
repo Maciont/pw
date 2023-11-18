@@ -31,7 +31,6 @@ export class GeneratorMainPage {
         this.menuButton = page.locator('p', { hasText: 'Menu'});
         this.socialmediaButton = page.locator('p', { hasText: 'Social Media'});
         this.simpletextButton = page.locator('p', { hasText: 'Simple Text'});
-        // this.imagesButton = page.locator('p', { hasText: 'Images'});
         this.imagesButton = page.getByRole('button', { name: 'Images Display an image' });
     }
 
@@ -47,17 +46,14 @@ export class GeneratorMainPage {
         return count;
     }
 
-    async getCategoryName() {
-    
-        const videoElements = await this.page
-        .getByTestId(`qr-code-types-list`)
-        .locator(`[type="button"]`)
-        .locator(`span[data-key^="api.messages.qr-categories.video."]`);
+    async getCategoryNames() {
+      const numOfElements = await this.countCategoryButtons();
+      for(let i = 0; i < numOfElements; i++) {
+      const categoryNames = await this.page.locator('[data-testid="qr-code-types-list"] p.template-selector__item-container_caption-title span').allTextContents();
+      console.log(categoryNames);
+      return categoryNames
+      }
       
-      const videoNames = await videoElements.$$eval('*',
-        (elements) => elements.map((element) => element.innerText)
-      );
       
-      console.log('Video Names:', videoNames);
-    }
+      }
 }

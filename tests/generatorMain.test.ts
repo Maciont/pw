@@ -7,12 +7,17 @@ test.describe('Check elements', () => {
     })
     
     test('Check if number of categories is 12', async ({generatorMain}) => {
-        await expect(generatorMain.imagesButton).toBeVisible();
         const buttonsCount = await generatorMain.countCategoryButtons();
-        const catName = await generatorMain.getCategoryName();
         await expect(buttonsCount).toBe(12);
     }
-    
     )
-
+    
+    test('Check if category names match the list', async ({generatorMain}) => {
+        const expectedCategoryNames =['Facebook', "Wi-Fi", 'Website URL', 'vCard', 'Business Page', 
+        'App', 'Video', 'Menu', 'PDF', 'Social Media', 'Simple Text', 'Images'];
+        const actualCategoryNames = await generatorMain.getCategoryNames();
+        console.log('Actual categories:', actualCategoryNames);
+        expect(actualCategoryNames).toEqual(expectedCategoryNames);
+    }
+    )
 });
