@@ -9,6 +9,8 @@ export class LoginPage {
     readonly emailWarning: Locator;
     readonly loginHeading: Locator;
     readonly forgotPasswordLink: Locator;
+    readonly passTooShortWarning: Locator;
+    readonly passShouldHaveNumbersAndLettersWarning: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -19,6 +21,8 @@ export class LoginPage {
         this.emailWarning = page.locator('p', { hasText: 'You have entered an invalid email address. Please try again.'});
         this.loginHeading = page.locator('h1', { hasText: 'Log In'});
         this.forgotPasswordLink = page.locator('a', { hasText: 'Forgot your password?'});
+        this.passTooShortWarning = page.locator('p', { hasText: 'Your password must contain at least 8 characters.'});
+        this.passShouldHaveNumbersAndLettersWarning = page.locator('p', { hasText: 'Your password must contain a combination of both letters and numbers.'});
     }
 
     async navigateToLoginPage() {
