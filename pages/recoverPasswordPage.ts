@@ -10,6 +10,7 @@ export class RecoverPasswordPage {
     readonly passwordField: Locator;
     readonly loginButton: Locator;
     readonly recoveryEmailWarning: Locator;
+    readonly recoveryWrongEmailToast: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -21,6 +22,7 @@ export class RecoverPasswordPage {
         this.passwordField = page.locator('#password');
         this.loginButton = page.locator('a', { hasText: 'Log In' });
         this.recoveryEmailWarning = page.locator('p', { hasText: 'You have entered an invalid email address. Please try again.'});
+        this.recoveryWrongEmailToast = page.locator('[id="__next"] div').filter({ hasText: 'The email address you entered' }).nth(2);
     }
 
     async navigateToPasswordRecoveryPopup() {
